@@ -12,7 +12,7 @@ import fonts from '../styles/fonts';
 
 export function NomedaFuncao(){
 
-    return(){
+    return(
 
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -21,7 +21,7 @@ export function NomedaFuncao(){
                 </Text>
             </View>
         </SafeAreaView>
-    }
+    )
 }
 
 const styles = StyleSheet.create({
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     content:{
         flex: 1
-    }
+    },
     text:{
 
     }
