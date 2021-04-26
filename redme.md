@@ -4,10 +4,12 @@
 
     npm install --global expo-cli
 
-## Rodar Aplicação
+## Inciar Aplicação
 
-expo init my-project
+    expo init my-project
 
+## Executar Projeto
+    expo start
 ## Icones
 
     expo install @expo/install-icons
