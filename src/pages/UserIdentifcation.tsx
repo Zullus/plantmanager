@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
     SafeAreaView,
@@ -10,7 +11,8 @@ import {
     KeyboardAvoidingView,
     Platform,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
 
 import {Button} from '../components/Button'
@@ -35,7 +37,6 @@ export function UserIdentification(){
 
     function handleImputFocus(){
         setIsFocused(true)
-
     }   
 
     function handleInputChange(value: string){
@@ -45,6 +46,11 @@ export function UserIdentification(){
 
     function handleSubitmit(){
 
+        if(!name)
+            return Alert.alert('Me diga como chamara você 😥')
+
+        AsyncStorage.setItem('@planmanager:user:name', name);
+        
         navigation.navigate('Confirmation')
         
     }

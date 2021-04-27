@@ -9,6 +9,7 @@
     expo init my-project
 
 ## Executar Projeto
+
     expo start
 ## Icones
 
@@ -60,7 +61,6 @@ Na raiz do app (App.tsx)
 
      json-server src\services\server.json --host 192.168.0.63 --port 3333 --delay 700 (Win)
 
-
 ## SVG
 
     expo install react-native-svg
@@ -68,3 +68,8 @@ Na raiz do app (App.tsx)
 ## Animações com Lottie
 
     expo install lottie-react-native
+
+## Async Storage
+
+    expo install @react-native-async-storage/async-storage
+
