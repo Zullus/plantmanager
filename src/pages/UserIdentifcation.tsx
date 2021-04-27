@@ -47,7 +47,7 @@ export function UserIdentification(){
     function handleSubitmit(){
 
         if(!name)
-            return Alert.alert('Me diga como chamara você 😥')
+            return Alert.alert('Me diga como chamar você 😥')
 
         AsyncStorage.setItem('@planmanager:user:name', name);
         
