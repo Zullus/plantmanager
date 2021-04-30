@@ -21,21 +21,10 @@ import fonts from '../styles/fonts';
 import warterdrop from '../assets/waterdrop.png';
 import { Button } from '../components/Button';
 import { format, isBefore } from 'date-fns';
-import id from 'date-fns/esm/locale/id/index.js';
+import { PlantProps, savePlant } from '../libs/storage';
 
 interface Params {
-    plant: {
-        id: string;
-        name: string;
-        about: string;
-        water_tips: string;
-        photo: string;
-        environments: [string];
-        frequency: {
-          times: number;
-          repeat_every:string;
-        }
-    }
+    plant: PlantProps
 }
 
 export function PlantSave(){
@@ -65,6 +54,20 @@ export function PlantSave(){
 
     function handleOpenDatetimePickerForAndroid(){
         setShowDatePicker(oldState => !oldState);
+    }
+
+    async function handleSave(){
+
+        try{
+
+            await savePlant({
+                ...plant,
+                dateTimeNotification: selectedDateTime
+            });
+        }
+        catch{
+            Alert.alert(' Não foi possível salvar. :😢')
+        }
     }
 
     return(
@@ -132,7 +135,7 @@ export function PlantSave(){
 
             <Button
                 title="Cadastrar Planta"
-                onPress={() => {}}
+                onPress={handleSave}
             />                
         
         </View>

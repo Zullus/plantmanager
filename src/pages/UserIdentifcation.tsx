@@ -49,9 +49,16 @@ export function UserIdentification(){
         if(!name)
             return Alert.alert('Me diga como chamar você 😥')
 
-        AsyncStorage.setItem('@planmanager:user:name', name);
-        
-        navigation.navigate('Confirmation')
+        try{
+            AsyncStorage.setItem('@planmanager:user:name', name);
+            
+            navigation.navigate('Confirmation')            
+        }
+        catch{
+            Alert.alert(' Não foi possível salvar o seu nome. 😥')
+        }
+
+
         
     }
      

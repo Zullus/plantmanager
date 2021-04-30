@@ -19,29 +19,17 @@ import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { Load } from '../components/Load';
 import { useNavigation } from '@react-navigation/native';
 
+import { PlantProps } from '../libs/storage';
 interface EnvironmentProps{
     key: string;
     title: string;
 }
 
-interface PlantsProps{
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-      times: number;
-      repeat_every:string;
-    }
-}
-
 export function PlantSelect(){
 
     const [enviroments, setEnviroments] = useState<EnvironmentProps[]>([]);
-    const [plants, setPlants] = useState<PlantsProps[]>([]);
-    const [filteredPlants, setFilteredPlants] = useState<PlantsProps[]>([]);
+    const [plants, setPlants] = useState<PlantProps[]>([]);
+    const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
     const [enviromentSelected, setEnviromentSelected] = useState('all');
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
@@ -94,7 +82,7 @@ export function PlantSelect(){
         fetchPlants();
     }
 
-    function handlePlantSelect(plant: PlantsProps){
+    function handlePlantSelect(plant: PlantProps){
 
         navegation.navigate('PlantSave', {plant});
     }
