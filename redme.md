@@ -73,3 +73,10 @@ Na raiz do app (App.tsx)
 
     expo install @react-native-async-storage/async-storage
 
+## DateTimePicker
+ 
+    expo install @react-native-community/datetimepicker
+
+## Date-FNS
+
+    yarn add date-fns
