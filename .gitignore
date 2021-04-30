@@ -11,3 +11,4 @@ web-build/
 arquivos_do_curso/
 # macOS
 .DS_Store
+*.lock
