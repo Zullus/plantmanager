@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import {
    Alert,
@@ -6,7 +7,6 @@ import {
    Text,
    View,
    Image,
-   ScrollView,
    Platform,
    TouchableOpacity
 } from 'react-native';
@@ -21,7 +21,7 @@ import fonts from '../styles/fonts';
 import warterdrop from '../assets/waterdrop.png';
 import { Button } from '../components/Button';
 import { format, isBefore } from 'date-fns';
-import { PlantProps, savePlant } from '../libs/storage';
+import { loadPlant, PlantProps, savePlant } from '../libs/storage';
 
 interface Params {
     plant: PlantProps
@@ -31,6 +31,7 @@ export function PlantSave(){
 
     const [ selectedDateTime, setSelectedDateTime] = useState(new Date() );
     const [showDatePicker, setShowDatePicker] = useState( Platform.OS == 'ios' );
+    const navigation = useNavigation();
 
     const route = useRoute();
     const {plant} = route.params as Params;
@@ -64,6 +65,14 @@ export function PlantSave(){
                 ...plant,
                 dateTimeNotification: selectedDateTime
             });
+
+            navigation.navigate('Confirmation', {
+                title: 'Tudo Certo',
+                subtitle: 'Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado',
+                buttonTile: 'Muito Obrigado :D',
+                icon: 'hug',
+                nextScreen: 'MyPlant',
+            })
         }
         catch{
             Alert.alert(' Não foi possível salvar. :😢')

@@ -14,6 +14,7 @@ export interface PlantProps{
       repeat_every:string;
     },
     dateTimeNotification: Date;
+    hour: string;
 }
 
 interface StoragePlantProps{
@@ -46,14 +47,30 @@ export async function savePlant(plant: PlantProps): Promise<void>{
     }
 }
 
-export async function loadPlant(): Promise<StoragePlantProps>{
+export async function loadPlant(): Promise<PlantProps[]>{
 
         try{
 
             const data = await AsyncStorage.getItem('@planmanager:user:plants');
             const plants = data ? (JSON.parse(data) as StoragePlantProps) : {};
 
-            return plants;
+            const planstsSortes = Object
+            .keys(plants)
+            .map((plant) =>{
+                return{
+                    ...plants[plant].data,
+                    hour: format(new Date(plants[plant].data.dateTimeNotification), 'HH:mm')
+                }
+            })
+            .sort((a, b) =>
+                Math.floor(
+                    new Date(a.dateTimeNotification).getTime() / 1000 -
+                    Math.floor(new Date(b.dateTimeNotification).getTime() / 1000)
+                )
+            );
+
+            return planstsSortes;
+
         }
         catch(error){
             throw new Error(error)
