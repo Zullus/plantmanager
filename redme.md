@@ -59,7 +59,8 @@ Na raiz do app (App.tsx)
 
 ### Uso
 
-     json-server src\services\server.json --host 192.168.0.63 --port 3333 --delay 700 (Win)
+    json-server src\services\server.json --host 192.168.0.63 --port 3333 --delay 700 (Win)
+    json-server src\services\server.json --host 192.168.0.65 --port 3333 --delay 700 (Linux)
 
 ## SVG
 
